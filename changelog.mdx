@@ -1,0 +1,135 @@
+---
+title: Changelog
+description: Stay updated with the latest releases, features, and improvements in LAURYN DONG.
+---
+
+## Recent Releases
+
+LAURYN DONG evolves quickly to help you manage project documentation effectively. Review the latest updates below to see new features, improvements, and fixes. You receive notifications for major releases via email if subscribed.
+
+<Callout kind="info">
+  Subscribe to the LAURYN DONG newsletter or follow the GitHub repository to stay informed about upcoming releases.
+</Callout>
+
+## Version Summary
+
+| Version | Release Date | Key Changes |
+|---------|--------------|-------------|
+| v1.2.0  | 2024-10-15  | New search improvements, bug fixes |
+| v1.1.0  | 2024-09-20  | Collaboration features, UI enhancements |
+| v1.0.0  | 2024-08-10  | Initial stable release |
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "bugfix", "improvement"]}>
+
+## New Features
+
+- Added advanced full-text search across all documentation pages with fuzzy matching.
+- Introduced version pinning for docs pages to lock specific releases.
+
+## Improvements
+
+- Enhanced performance for large documentation sites, reducing load times by `>40%`.
+- Updated editor with real-time preview for MDX components.
+
+## Bug Fixes
+
+- Fixed rendering issues with nested code blocks in Steps and Tabs components.
+- Resolved authentication errors when using `{API_KEY}` in custom integrations.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Real-time collaboration allowing multiple users to edit docs simultaneously.
+- Integrated analytics dashboard to track page views and engagement.
+
+## Improvements
+
+- Redesigned navigation sidebar for better mobile responsiveness.
+- Added dark mode toggle with automatic system preference detection.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core MDX documentation engine with support for Cards, Steps, and Update components.
+- Built-in API for programmatic doc management at `https://api.example.com/docs`.
+
+## Breaking Changes
+
+- Updated authentication to require `YOUR_API_KEY` header instead of query params.
+
+## Initial Setup
+
+- First stable release with full component library.
+
+</Update>
+
+## Upgrade Guide
+
+Follow these steps to upgrade your LAURYN DONG instance to the latest version.
+
+<Steps>
+  <Step title="Check Current Version" icon="package">
+
+    Run the version check command:
+
+````bash
+npm list lauryn-dong
+````
+
+  </Step>
+  <Step title="Backup Your Docs" icon="database">
+
+    Export your documentation:
+
+    ```bash
+    lauryn-dong export --output ./backup
+    ```
+
+  </Step>
+  <Step title="Install Latest" icon="download">
+
+    <CodeGroup tabs="npm,yarn">
+    ````bash
+    npm install lauryn-dong@latest
+    ````
+
+    ````bash
+    yarn add lauryn-dong@latest
+    ````
+    </CodeGroup>
+
+  </Step>
+  <Step title="Restart Server" icon="refresh-cw">
+
+    Restart your documentation server:
+
+    ```bash
+    lauryn-dong serve
+    ```
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Test upgrades in a staging environment first. Review migration notes in each release for potential breaking changes.
+</Callout>
+
+## Next Steps
+
+<Columns cols={3}>
+  <Card title="Quickstart" icon="book-open" href="/quickstart">
+    Set up your first documentation site in minutes.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your docs with API keys.
+  </Card>
+  <Card title="Customization" icon="settings" href="/configuration">
+    Tailor LAURYN DONG to your needs.
+  </Card>
+</Columns>

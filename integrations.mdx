@@ -1,0 +1,137 @@
+---
+title: Integrations with LAURYN DONG
+description: Connect LAURYN DONG to external tools and services to streamline your documentation workflow.
+---
+
+## Overview
+
+LAURYN DONG integrates seamlessly with popular third-party services, webhooks, and APIs. You can automate documentation updates, sync with version control, and export content to other platforms. Start by exploring popular integrations, then configure webhooks or use API endpoints for custom needs.
+
+<Columns cols={3}>
+  <Card title="GitHub" icon="github" href="https://github.com">
+    Sync documentation changes with your repositories. Automatically update docs on pull requests or releases.
+  </Card>
+  <Card title="Slack" icon="message-circle" href="#">
+    Receive notifications for doc updates, approvals, and new versions in your Slack channels.
+  </Card>
+  <Card title="Zapier" icon="zap" href="https://zapier.com">
+    Build no-code automations connecting LAURYN DONG to 5000+ apps.
+  </Card>
+</Columns>
+
+## Webhook Configuration
+
+Set up webhooks to trigger external actions on events like document updates or page publishes. Navigate to your LAURYN DONG dashboard at `https://dashboard.example.com/settings/webhooks` and add a new webhook.
+
+<Steps>
+  <Step title="Create Webhook" icon="plus">
+    Enter your webhook URL, such as `https://your-webhook-url.com/webhook`, and select events like `doc.updated` or `page.published`.
+  </Step>
+  <Step title="Verify Secret" icon="shield">
+    Generate a secret token in LAURYN DONG and include it in the `X-Webhook-Secret` header for verification.
+  </Step>
+  <Step title="Test Endpoint" icon="play">
+    Send a test payload to confirm delivery.
+  </Step>
+</Steps>
+
+Here is an example webhook payload:
+
+<CodeGroup tabs="JSON">
+  ```json
+  {
+    "event": "doc.updated",
+    "doc_id": "doc_123abc",
+    "timestamp": "2024-10-15T12:00:00Z",
+    "data": {
+      "title": "API Reference",
+      "url": "https://docs.example.com/api"
+    }
+  }
+  ```
+</CodeGroup>
+
+<Callout kind="tip">
+  Always validate the `X-Webhook-Secret` header on your server to prevent unauthorized requests.
+</Callout>
+
+## API Endpoints for Custom Integrations
+
+Use LAURYN DONG's REST API at `https://api.example.com/v1` to create, update, or fetch documentation programmatically.
+
+<ParamField path="docs" param-type="GET" required="true">
+  Retrieve a list of your documents.
+</ParamField>
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Bearer `{YOUR_API_KEY}` for authentication.
+</ParamField>
+
+Example request:
+
+<Request tabs="JavaScript,cURL">
+  ````javascript
+  const response = await fetch('https://api.example.com/v1/docs', {
+    headers: {
+      'Authorization': 'Bearer YOUR_API_KEY'
+    }
+  });
+  const docs = await response.json();
+  console.log(docs);
+  ````
+
+  ````bash
+  curl -H "Authorization: Bearer YOUR_API_KEY" \
+       https://api.example.com/v1/docs
+  ````
+</Request>
+
+<Response tabs="200">
+  ```json
+  {
+    "docs": [
+      {
+        "id": "doc_123abc",
+        "title": "Getting Started",
+        "updated_at": "2024-10-15T12:00:00Z"
+      }
+    ]
+  }
+  ```
+</Response>
+
+## Export Options
+
+Export your documentation to various formats for sharing or migration.
+
+<Tabs>
+  <Tab title="Markdown" icon="file-text">
+    Download entire sites or single pages as Markdown files. Ideal for GitHub repos.
+    
+    ```
+    https://dashboard.example.com/export/markdown?doc_id=doc_123abc
+    ```
+  </Tab>
+  <Tab title="PDF" icon="file-text">
+    Generate printable PDFs with custom branding.
+    
+    ```
+    https://dashboard.example.com/export/pdf?include_toc=true
+    ```
+  </Tab>
+  <Tab title="HTML" icon="code">
+    Export static HTML for hosting on any web server.
+    
+    <Callout kind="info">
+      HTML exports include all images and styles.
+    </Callout>
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+<Expandable title="Advanced Integration Tips" default-open="false">
+  For complex workflows, combine webhooks with API calls. Monitor rate limits at `<1000 requests/minute>` and implement retries for failed deliveries.
+</Expandable>
+
+Explore the [API Reference](/api-reference) for more endpoints or set up your first GitHub integration today.
